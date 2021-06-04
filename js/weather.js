@@ -23,7 +23,7 @@ function getWeather(lat, lon) {
         const icon = new Image();
         const imgName = json.weather[0].icon;
         
-        icon.src = `http://openweathermap.org/img/wn/${imgName}.png`;
+        icon.src = `https://openweathermap.org/img/wn/${imgName}.png`;
         weatherIcon.prepend(icon);
     });
     

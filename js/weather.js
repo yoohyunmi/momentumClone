@@ -1,7 +1,6 @@
 const weather = document.querySelector(".js-weather"),
     weatherIcon = document.querySelector(".weather-icon"),
-    jsLocation = document.querySelector(".js-location"),
-    wiseSaying = document.querySelector(".js-wiseSaying");
+    jsLocation = document.querySelector(".js-location");
 
 const API_KEY = "580cb1e4a7df57d913af71bad2f63c33";
 const COORDS = 'coords';
@@ -14,10 +13,10 @@ function getWeather(lat, lon) {
         return response.json()
     }).then(function(json) {      // 가져온 데이터를 처리하는데 시간이 걸리므로 JSON 데이터가 준비되면 기다렸다가 실행
         console.log(json);
-        const temperature = parseFloat(json.main.temp).toFixed(1);
+        const temperature = parseFloat(json.main.temp).toFixed();
         const place = json.name;
 
-        weather.innerText = `${temperature}°C`;
+        weather.innerText = `${temperature}°`;
         jsLocation.innerText = `${place}`;
 
         const icon = new Image();
@@ -67,27 +66,8 @@ function loadCoords() {
 }
 
 
-function loadSaying() {
-    fetch(`https://api.adviceslip.com/advice`).then(function(response) {
-        if(response.status === 200) {
-            return response.json()
-        } else {
-            console.error('Error occured while fetching wise-saying.');
-        }
-    }).then(function(json) {
-        const advice = json.slip.advice;
-        console.log(wiseSaying);
-
-        console.log(advice);
-        wiseSaying.innerText = "@ " + advice;
-    });
-    
-}
-
-
 function init() {
     loadCoords();
-    loadSaying();
 }
 
 init();

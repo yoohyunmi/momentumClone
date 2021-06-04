@@ -1,22 +1,42 @@
 body {
 	background: color #2c3e50;;
 }
-
-h1, h4, ul, input {
-	color : white;
+div {
+    display: flex;
 }
-#weather {
-    color: #FFF;
-    width: 130px;
+.top-row {
+    height: 60px;
+    position: relative;
+}
+.top-left {
+    float: left;
+    --max-height: 60px;
+    --side-padding: 8px;
+    height: 150px;
+    align-items: stretch;
+}
+.top-right {
     float: right;
+    width: 130px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.top-center, .top-left, .top-right {
+    flex: 1 1 auto;
+    position: relative;
+    display: flex;
+}
+.weather {
+    color: #FFF;
     margin-top: 0;
     padding: 5px;
     border: 10px;
-}
+    text-align: right;
+} 
 span.weather-icon {
     align-content: center;
 }
-
 span.js-weather {
     font-size: 30px;
     text-shadow: 1px 1px 10px #000;
@@ -26,9 +46,13 @@ span.js-location {
     font-weight: bold;
     /* text-align: center; span 태그는 text-align 적용 안된다고 함 */
     display: inline-block;
-    text-align: center;
+    text-align: right;
     width: 95%;
     text-shadow: 0.5px 0.5px 10px #000;
+} 
+
+h1, h4, ul, input {
+	color : white;
 }
 
 .js-clock {
@@ -122,11 +146,11 @@ ul li {
     font-size: 100%;
 }
 
-#wiseSaying {
+.js-quotes {
     color: #FFF;
     text-align: justify;
 }
-.js-wiseSaying {
+#wiseSaying {
     font-size: 20px;
     font-weight: bold;
     font-family: "Papyrus", "Fantasy";

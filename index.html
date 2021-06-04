@@ -2,24 +2,30 @@
 <html>
 
 	<head>
-		<title>Practice</title>
+		<title>My Momentum</title>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="index.css"/>
 	</head>
 
 	<body>
-		<div style="min-height: 150px;">
-			<span id="weather">
-				<span class="weather-icon"></span>
-				<span class="js-weather"></span>
+		<div class="top-row" style="min-height: 150px;">
+			<div class="top-left"></div>
+			<div class="top-center"></div>
+			<div class="top-right">
+				<span class="weather">
+					<span class="weather-icon"></span>
+					<span class="js-weather"></span>
 				<span class="js-location"></span>
-			</span>	
+			</span>
+			</div>
 		</div>
+
+		<div class="region-center-above"></div>
 
 		<div class="js-clock center">
 			<h1>00:00</h1>
 		</div>
-
 		<form class="js-form form center">
 			<input type="text" placeholder="What is your name?"/>
 		</form>
@@ -30,14 +36,15 @@
 		</form>
 		<ul class="js-toDoList center"></ul>
 		
-		<div id="wiseSaying" class="center">
-			<span class="js-wiseSaying"></span>
+		<div class="bottom-row js-quotes" class="center">
+			<span id="wiseSaying"></span>
 		</div>
 
-		<script src="clock.js"></script>
-		<script src="greeting.js"></script>
-		<script src="todo.js"></script>
-		<script src="bg.js"></script>
-		<script src="weather.js"></script>
+		<script src="js/clock.js"></script>
+		<script src="js/greeting.js"></script>
+		<script src="js/todo.js"></script>
+		<script src="js/bg.js"></script>
+		<script src="js/weather.js"></script>
+		<script src="js/quotes.js"></script>
 	</body>
 </html>

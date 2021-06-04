@@ -1,4 +1,4 @@
-const jsQuote = document.querySelector(".js-quote");
+const wiseSaying = document.querySelector("#wiseSaying");
 
 function loadSaying() {
     fetch(`https://api.adviceslip.com/advice`).then(function(response) {
@@ -9,9 +9,9 @@ function loadSaying() {
         }
     }).then(function(json) {
         const advice = json.slip.advice;
-        console.log(wiseSaying);
+        // console.log(wiseSaying);
 
-        console.log(advice);
+        // console.log(advice);
         wiseSaying.innerText = "@ " + advice;
     });
     

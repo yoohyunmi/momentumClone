@@ -1,5 +1,4 @@
-const clockContainer = document.querySelector(".js-clock"),
-	clockTitle = clockContainer.querySelector("h1");
+const clockTitle = document.querySelector(".js-clock");
 
 function getTime(){
 	const date = new Date();	// 클래스, 객체

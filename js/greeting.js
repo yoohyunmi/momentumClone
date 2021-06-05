@@ -1,7 +1,9 @@
+import Clock from './moduleClock.js';
+
 const form = document.querySelector(".js-form"),
 	input = form.querySelector("input"),
 	greeting = document.querySelector(".js-greetings");
-
+const clockTitle = document.querySelector(".js-clock");
 	
 const USER_LS = "currentUser",
 	SHOWING_ON = "showing";
@@ -41,8 +43,16 @@ function saveName(name) {
 	localStorage.setItem(USER_LS, name);
 }
 
+function setTime() {
+	const clock = new Clock();
+	clockTitle.innerText = clock.getTime();
+}
+
 function init() {
 	loadName();
+	// set Time 
+	setTime();
+	setInterval(setTime, 1000);
 }
 
 init();

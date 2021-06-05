@@ -1,5 +1,4 @@
 import Clock from './modules/moduleClock.js';
-import Store from './modules/store.js';
 
 const form = document.querySelector(".js-form"),
 	input = form.querySelector("input"),
@@ -35,7 +34,7 @@ function paintGreeting(text) {
 
 function loadName() {
 	const currentUser = localStorage.getItem(USER_LS);
-	// const store = new Store();
+	
 	if(currentUser === null) {
 		askForName();
 		greeting.classList.remove(SHOWING_ON);

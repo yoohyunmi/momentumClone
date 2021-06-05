@@ -1,4 +1,4 @@
-import Clock from './moduleClock.js';
+import Clock from './modules/moduleClock.js';
 
 const form = document.querySelector(".js-form"),
 	input = form.querySelector("input"),

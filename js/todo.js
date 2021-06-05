@@ -19,9 +19,27 @@ function deleteTodo(event) {
 	});
 	// console.log(cleanToDos);
 	toDos = cleanToDos;
+
 	saveToDos();
 }
 
+function checkTodoCounts() {
+	const loadedToDos = localStorage.getItem(TODOS_LS);
+	if(loadedToDos === null) return 0;
+	else {
+		const parsedToDos = JSON.parse(loadedToDos);
+		return parsedToDos.length;
+	}
+}
+// Maximum Input -> 5
+function setInputDisabled() {
+	if(checkTodoCounts() > 4) {	
+		toDoInput.disabled = true;
+		// console.log("input text disabled.")
+	} else {
+		toDoInput.disabled = false;
+	}
+}
 // to-do 출력
 function paintToDo(text) {
 	const li = document.createElement("li");
@@ -33,8 +51,8 @@ function paintToDo(text) {
 	delBtn.innerText = "X";
 	delBtn.className = "checkbox";
 	delBtn.addEventListener("click", deleteTodo);
-	span.className="todo"
 
+	span.className="todo"
 	span.innerText = text;
 
 	li.appendChild(delBtn);
@@ -72,9 +90,14 @@ function loadToDos() {
 
 function saveToDos() {
 	localStorage.setItem(TODOS_LS, JSON.stringify(toDos));	// localStorage는 String 타입으로 바꿔서 넣으려고 함.
+
+	setInputDisabled();
 }
 
 function init() {
+
+	setInputDisabled();
+
 	loadToDos();
 	toDoForm.addEventListener("submit", handleSubmit);
 }

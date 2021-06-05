@@ -6,7 +6,9 @@ const form = document.querySelector(".js-form"),
 const clockTitle = document.querySelector(".js-clock");
 	
 const USER_LS = "currentUser",
-	SHOWING_ON = "showing";
+	SHOWING_ON = "showing";	
+
+let when = "";
 
 // 사용자가 이름 적고 Enter 치면 일어날 일
 function handleSubmit(event) {
@@ -27,7 +29,7 @@ function askForName() {
 function paintGreeting(text) {
 	form.classList.remove(SHOWING_ON);
 	greeting.classList.add(SHOWING_ON);
-	greeting.innerText = `Hello ${text}`;
+	greeting.innerText = `${when}, ${text}`;
 }
 
 function loadName() {
@@ -47,6 +49,11 @@ function setTime() {
 	const clock = new Clock();
 	const time = clock.getTime();
 	
+	if( 5 <= time.hours && time.hours < 12 ) when = "Good morning";
+	else if( time.hours < 17 ) when = "Good afternoon";
+	else if( time.hours < 20 ) when = "Good evening";
+	else 						when = "Good night";
+
 	clockTitle.innerText = `${time.hours < 10 
 		? `0${time.hours}` : time.hours}:${time.minutes < 10 
 		? `0${time.minutes}` : time.minutes}:${time.seconds < 10 
@@ -54,10 +61,10 @@ function setTime() {
 }
 
 function init() {
-	loadName();
-	// set Time 
 	setTime();
+	loadName();
 	setInterval(setTime, 1000);
+	setInterval(loadName, 1000*60*24);
 }
 
 init();

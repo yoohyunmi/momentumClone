@@ -8,7 +8,7 @@ const clockTitle = document.querySelector(".js-clock");
 const USER_LS = "currentUser",
 	SHOWING_ON = "showing";
 
-// 사용자가 Enter 치면 일어날 일
+// 사용자가 이름 적고 Enter 치면 일어날 일
 function handleSubmit(event) {
 	event.preventDefault();
 	const currentValue = input.value;
@@ -17,11 +17,11 @@ function handleSubmit(event) {
 	saveName(currentValue);
 }
 
+// 사용자 이름이 존재하지 않을 경우
 function askForName() {	
 	form.classList.add(SHOWING_ON);
 	form.addEventListener("submit", handleSubmit);
 }	
-
 
 // 사용자 이름이 존재할경우 
 function paintGreeting(text) {
@@ -45,7 +45,12 @@ function saveName(name) {
 
 function setTime() {
 	const clock = new Clock();
-	clockTitle.innerText = clock.getTime();
+	const time = clock.getTime();
+	
+	clockTitle.innerText = `${time.hours < 10 
+		? `0${time.hours}` : time.hours}:${time.minutes < 10 
+		? `0${time.minutes}` : time.minutes}:${time.seconds < 10 
+		? `0${time.seconds}` : time.seconds}`;
 }
 
 function init() {

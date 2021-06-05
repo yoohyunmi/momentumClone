@@ -1,4 +1,5 @@
 import Clock from './modules/moduleClock.js';
+import Store from './modules/store.js';
 
 const form = document.querySelector(".js-form"),
 	input = form.querySelector("input"),
@@ -34,6 +35,7 @@ function paintGreeting(text) {
 
 function loadName() {
 	const currentUser = localStorage.getItem(USER_LS);
+	// const store = new Store();
 	if(currentUser === null) {
 		askForName();
 		greeting.classList.remove(SHOWING_ON);
@@ -49,7 +51,8 @@ function setTime() {
 	const clock = new Clock();
 	const time = clock.getTime();
 	
-	if( 5 <= time.hours && time.hours < 12 ) when = "Good morning";
+	if( 0 <= time.hours && time.hours < 5 ) when = "Good night";
+	else if( time.hours < 12 ) when = "Good morning";
 	else if( time.hours < 17 ) when = "Good afternoon";
 	else if( time.hours < 20 ) when = "Good evening";
 	else 						when = "Good night";

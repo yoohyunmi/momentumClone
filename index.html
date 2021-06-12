@@ -14,7 +14,7 @@
 			<div class="top-left"></div>
 			<div class="top-center"></div>
 			<div class="top-right">
-				<span class="weather">
+				<span class="weather hidden">
 					<span class="weather-icon"></span>
 					<span class="js-weather"></span>
 				<span class="js-location"></span>
@@ -24,22 +24,27 @@
 
 		<div class="center-above"></div>
 
-		<div class="region-center">
-			<h1 class="js-clock">00:00</h1>
-			<form class="js-form form">
-				<input type="text" placeholder="What is your name?"/>
+		<div class="first-region showing">
+			<span class="question">Hello, What is your name?</span>
+			<form class="js-form">
+				<input type="text" />
 			</form>
-			<h4 class="js-greetings greetings"></h4>
+		</div>
+
+		<div class="region-center hidden">
+			<h1 class="js-clock">00:00</h1>
+			<h4 class="js-greetings"></h4>
+
+			<form class="js-toDoForm">
+				<input type="text" placeholder="Write your to-do." />
+			</form>
+			<ul class="js-toDoList"></ul>
 		</div>
 
 		<div class="center-below">
-		<form class="js-toDoForm">
-			<input type="text" placeholder="Write your to-do." />
-		</form>
-		<ul class="js-toDoList"></ul>
 		</div>
 
-		<div class="bottom-row">
+		<div class="bottom-row hidden">
 			<span id="wiseSaying"></span>
 		</div>
 

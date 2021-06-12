@@ -12,7 +12,7 @@ function getWeather(lat, lon) {
     ).then(function(response) {     // then -> 데이터가 넘어오면 함수를 호출
         return response.json()
     }).then(function(json) {      // 가져온 데이터를 처리하는데 시간이 걸리므로 JSON 데이터가 준비되면 기다렸다가 실행
-        console.log(json);
+        // console.log(json);
         const temperature = parseFloat(json.main.temp).toFixed();
         const place = json.name;
 
@@ -34,7 +34,7 @@ function saveCoords(coordsObj) {
 
 // 좌표 가져오는데 성공했을 때 콜백함수
 function handleGeoSuccess(position) {
-    console.log(position);
+    // console.log(position);
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
     const coordsObj = {
@@ -60,7 +60,7 @@ function loadCoords() {
         askForCoords();
     } else {
         const parsedCoords = JSON.parse(loadedCoords);
-        console.log(parsedCoords);
+        // console.log(parsedCoords);
         getWeather(parsedCoords.latitude, parsedCoords.longitude);
     }
 }

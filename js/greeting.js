@@ -4,11 +4,25 @@ const form = document.querySelector(".js-form"),
 	input = form.querySelector("input"),
 	greeting = document.querySelector(".js-greetings");
 const clockTitle = document.querySelector(".js-clock");
-	
+const hiddenAll = document.querySelectorAll(".hidden"),
+	firstRegion = document.querySelector(".first-region");
+
 const USER_LS = "currentUser",
-	SHOWING_ON = "showing";	
+	SHOWING_ON = "showing",
+	HIDDEN = "hidden";	
 
 let when = "";
+
+// Modify class hidden -> showing
+function changeClassShowing() {
+	hiddenAll.forEach(function(hidden) {
+		hidden.classList.remove(HIDDEN);
+		hidden.classList.add(SHOWING_ON);
+	});
+	// hide first-region
+	firstRegion.classList.remove(SHOWING_ON);
+	firstRegion.classList.add(HIDDEN);
+}
 
 // 사용자가 이름 적고 Enter 치면 일어날 일
 function handleSubmit(event) {
@@ -27,9 +41,8 @@ function askForName() {
 
 // 사용자 이름이 존재할경우 
 function paintGreeting(text) {
-	form.classList.remove(SHOWING_ON);
-	greeting.classList.add(SHOWING_ON);
 	greeting.innerText = `${when}, ${text}`;
+	changeClassShowing();
 }
 
 function loadName() {

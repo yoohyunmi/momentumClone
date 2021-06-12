@@ -11,13 +11,19 @@ function deleteTodo(event) {
 	const btn = event.target;
 	const li = btn.parentNode;
 
+	console.log(event.target);
+	console.log(btn.parentNode);
+	console.log(li.id);
+
 	toDoList.removeChild(li);
+	console.log(toDoList);
 
 	// 각각의 아이템을 실행하면서 true를 return하는 아이템을 array로 반환
 	const cleanToDos = toDos.filter(function(toDo) {
+		console.log(toDo.id);
 		return toDo.id !== parseInt(li.id);
 	});
-	// console.log(cleanToDos);
+	console.log(cleanToDos);
 	toDos = cleanToDos;
 
 	saveToDos();
